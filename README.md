@@ -110,7 +110,10 @@ PS. 詳細 Script 範例可以參考 8Comic_eng.script / 8Comic_cht.script
     - 切換頁籤 {tab-index}
   - 指令說明:
     - 切換到某個頁籤
-    - {tab-index} 為頁籤編號, 從 0 開始.
+    - 若 {tab-index} 為 First, 切換到最左邊的頁籤, 作用等於輸入 0.
+    - 若 {tab-index} 為 Latest, 切換到最右邊的頁籤, 作用等於輸入任意負數.
+    - 若 {tab-index} 為大於等於 0 的數字, 則表示一個從 0 開始的頁籤編號.
+    - 若 {tab-index} 為小於 0 的數字, 則表示切換到最右邊的頁籤, 作用等於輸入 Latest.
 
 - 關閉頁籤
   - 指令格式:

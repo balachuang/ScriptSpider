@@ -16,7 +16,6 @@ public class Cmd_SwitchTab extends Command
 
 	public Cmd_SwitchTab()
 	{
-		// to-do: addd SwitchTab New
 		this.commandEng = "SwitchTab";
 		this.commandCht = "切換頁籤";
 		this.parsePattern = String.format("^\\s*(%s|%s)\\s+(?<tab>\\d+)\\s*$", this.commandEng, this.commandCht);
@@ -31,6 +30,8 @@ public class Cmd_SwitchTab extends Command
 		if (matcher.find())
 		{
 			String find = Tools.parseVariables(matcher.group("tab"));
+			if ("First".equalsIgnoreCase(find)) find = "0";
+			if ("Latest".equalsIgnoreCase(find)) find = "-1";
 			tabIdx = Integer.parseInt(find);
 			isMatch = true;
 		}
@@ -46,6 +47,7 @@ public class Cmd_SwitchTab extends Command
 		try
 		{
 			ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+			if (tabIdx < 0) tabIdx = tabs.size() - 1;
 			if (tabIdx >= tabs.size()) return Tools.logErr(logger, "Execution Fail: Index Not Found (" + tabIdx + ")");
 
 			driver.switchTo().window(tabs.get(tabIdx));

@@ -16,7 +16,7 @@ public class Cmd_Find extends Command
 {
 	private String searchTerm;
 
-	// To-Do: Find --> Get DOM / Attraibute / innerText / innerHtml/ ....
+	// To-Do: check difference between Find / Get
 	public Cmd_Find()
 	{
 		this.commandEng = "Find";

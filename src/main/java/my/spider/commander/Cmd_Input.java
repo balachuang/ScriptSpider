@@ -42,6 +42,7 @@ public class Cmd_Input extends Command
 	// 3. If not found, return false
 	public boolean execute(WebDriver driver)
 	{
+		// to-do: support [ENTER]
 		try
 		{
 			WebElement webElem = SystemVarManager.getPrevWebElement();
