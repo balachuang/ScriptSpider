@@ -1,31 +1,48 @@
 # Script Spider
 
 ## 說明
-Script Spider 是一個以 Selenium 為基礎的網路爬蟲程. 主要特點是可以透過 Script 來控制 Spider 行為, 不需要每換一個網站就要改一次程式.
+Script Spider 是一個以 Selenium 為基礎的網路爬蟲程式. 主要特點是可以透過 Script 來控制 Spider 行為, 不需要每換一個網站就要改一次程式.
 
 ## Script 語法
 Script 為 UTF-8 格式的純文字檔, 每行都是一個獨立的指令. 開頭為 --- 表示為註解, 可以使用空格及 Tab 來內縮以方便閱讀. 也可以用空白行來分隔不同區塊以增加 Script 的可讀性. 所有的指令都有中英文版本, 可參考下面範例.
 
-以下為一段 Script 範例及對應說明:
+以下為一段簡短 Script 範例及對應說明:
 
 ```
 -- define parameters
 Define testUrl https://www.momoshop.com.tw/main/Main.jsp
+
+-- MOMO
 Navigate $(testUrl)
 Click #keyword
 Input 測試  試紙
 Click #topSchFrm button
+
+-- Google
+瀏覽網頁 https://www.google.com.tw/
+點擊元件 textarea[name="q"]
+輸入文字 Test
 ```
 
-| Script                                                       | 說明   |
-|--------------------------------------------------------------|-------------|
-| --- define parameters                                         | 註解 |
-| Define testUrl https://www.momoshop.com.tw/main/Main.jsp     | 定義變數 |
-| Navigate $(testUrl)                                          | 瀏覽網頁 |
-| Click #keyword                                               | 使用 CSS Selector 搜尋元件並點擊 |
-| Input 測試 試紙                                              | 輸入文字: "測試 試紙" |
-| 瀏覽網頁 https://www.momoshop.com.tw/main/Main.jsp           | 瀏覽網頁 (使用中文指令) |
-| 點擊元件 #topSchFrm button                                   | 使用 CSS Selector 搜尋元件並點擊 (使用中文指令) |
+說明
+| Script                                                       | 說明                                         |
+|--------------------------------------------------------------|----------------------------------------------|
+| --- define parameters                                        | 註解                                         |
+| Define testUrl https://www.momoshop.com.tw/main/Main.jsp     | 定義變數                                      |
+|                                                              | 空白行                                       |
+| --- MOMO                                                     | 註解                                         |
+| Navigate $(testUrl)                                          | 瀏覽網頁                                      |
+| Click #keyword                                               | 使用 CSS Selector 搜尋元件並點擊               |
+| Input 測試 試紙                                               | 輸入文字: "測試 試紙"                          |
+|                                                              | 空白行                                        |
+| --- Google                                                   | 註解                                         |
+| 瀏覽網頁 https://www.google.com.tw/                           | 瀏覽網頁 (使用中文指令)                        |
+| 點擊元件 textarea[name="q"]                                   | 使用 CSS Selector 搜尋元件並點擊 (使用中文指令) |
+| 輸入文字 Test                                                 | 輸入 Test 文字 (使用中文指令)                  |
+```
+PS. 詳細 Script 範例可以參考 8Comic_eng.script / 8Comic_cht.script
+```
+
 
 ## 指令說明
 以下列出目前所有支援的指令:
