@@ -125,11 +125,54 @@ PS. 詳細 Script 範例可以參考 8Comic_eng.script / 8Comic_cht.script
 
 ### 網頁元件操作指令
 
-搜尋元件	Find
-取得元件	Get
-點擊元件	Click
-輸入文字	Input
-下載檔案	Download
+- 搜尋元件
+  - 指令格式:
+    - Find {css-selector}
+    - 搜尋元件 {css-selector}
+  - 指令說明:
+    - 用 CSS Selector 搜尋某個元件
+    - {css-selector} 為 CSS Selector.
+    - 若輸入的 CSS Selector 有對應到某個元件, 則該元件會被記錄起來.
+    - 若輸入的 CSS Selector 對應到超過一個元件, 則只記錄第一個, 要查詢其他元件需自行調整 CSS Selector.
+
+- 取得元件本身或元件內參數
+  - 指令格式:
+    - Get {css-selector} {attribute-name}
+    - 取得元件 {css-selector} {attribute-name}
+  - 指令說明:
+    - 用 CSS Selector 搜尋某個元件後, 取得 Attribute 內容
+    - {css-selector} 為 CSS Selector, {attribute-name} 為要回傳的 Attribute 名稱.
+    - 若輸入的 CSS Selector 有對應到某個元件, 則該元件的 {attribute-name} 會被記錄為文字資料, 之後可以用 ${prevText} 取得.
+    - 若輸入的 CSS Selector 對應到超過一個元件, 則只記錄第一個.
+    - {attribute-name} 可使用所有出現在該元件的 Attribute, 包含 innerText, innerHtml 等.
+
+- 搜尋元件並點擊
+  - 指令格式:
+    - Click {css-selector}
+    - 點擊元件 {css-selector}
+  - 指令說明:
+    - 用 CSS Selector 搜尋某個元件後, 點擊該元件. (本行為和 Focus 有相同效果)
+    - {css-selector} 為 CSS Selector.
+    - 若輸入的 CSS Selector 有對應到某個元件, 則該元件被點擊後, 也會被記錄起來.
+    - 若輸入的 CSS Selector 對應到超過一個元件, 則只記錄第一個.
+
+- 輸入文字
+  - 指令格式:
+    - Input {text}
+    - 輸入文字 {text}
+  - 指令說明:
+    - 輸入 {text} 文字內容, 輸入的目前為之前使用 Find 或 Click 所記錄的元件.
+    - {text} 為要輸入的任意文字, 可不需雙引號.
+    - 可以使用 [ENTER] 表示要輸入 Enter 鍵. (注意大小寫要相同)
+    - 注意! [ENTER] 不能包含在其他文字中, 要單獨使用如: Input [ENTER].
+
+- 下載檔案
+  - 指令格式:
+    - Download {url} {file-path}
+    - 下載檔案 {url} {file-path}
+  - 指令說明:
+    - 將 {url} 指向的檔案下載並存在 {file-path}.
+    - {file-path} 需包含檔案名稱. 若沒有指定路徑, 則檔案將存在目前目錄下.
 
 ### 流程控制指令
 

@@ -3,6 +3,7 @@ package my.spider.commander;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -42,13 +43,15 @@ public class Cmd_Input extends Command
 	// 3. If not found, return false
 	public boolean execute(WebDriver driver)
 	{
-		// to-do: support [ENTER]
 		try
 		{
 			WebElement webElem = SystemVarManager.getPrevWebElement();
 			if (webElem == null) return Tools.logErr(logger, "Execution Fail: Previous Element Not Found");
 
-			webElem.sendKeys(text);
+			if ("[ENTER]".equals(text))
+				webElem.sendKeys(Keys.RETURN);
+			else
+				webElem.sendKeys(text);
 			this.execResultMsg = String.format("Text input: %s", text);
 		}
 		catch(Exception ex)
