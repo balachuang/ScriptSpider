@@ -59,7 +59,7 @@ PS. 詳細 Script 範例可以參考 8Comic_eng.script / 8Comic_cht.script
 
 ### 輔助指令
 
--  註解
+- 註解
   - 指令格式:
     - ---
   - 指令說明:
@@ -186,9 +186,41 @@ PS. 詳細 Script 範例可以參考 8Comic_eng.script / 8Comic_cht.script
 
 ### 流程控制指令
 
-條件判斷	If
-結束判斷	End
-進入迴圈	Loop
-回到開頭	Next
-跳出迴圈	Break
+- 條件判斷
+  - 指令格式:
+    - If {condition}
+    - 條件判斷 {condition}
+  - 指令說明:
+    - 若 {condition} 判斷結果為真, 則執行 If ~ End 之間的指令.
+    - {condition} 語法使用一般 Java if() 語法.
 
+- 標記 If 結束位置
+  - 指令格式:
+    - End
+    - 結束判斷
+  - 指令說明:
+    - 與 If 成對出現, 標記 If 指令要執行的範圍.
+
+- 進入迴圈
+  - 指令格式:
+    - Loop [{start} {end}]
+    - 進入迴圈 [{start} {end}]
+  - 指令說明:
+    - 依 {start}, {end} 指定的區間, 執行 Loop ~ Next 之間的指令.
+    - {start} 及 {end} 也可不指定, 若不指定時, Loop 到 Next 之間的指令會持續執行直到遇見 Break 指令.
+    - 在 Loop ~ Next 範圍中, 可以使用 ${loop} 取得目前 loop index.
+
+- 回到 Loop 開頭
+  - 指令格式:
+    - Next
+    - 回到開頭
+  - 指令說明:
+    - 與 Loop 成對出現, 標記 Loop 指令要執行的範圍.
+
+- 跳出迴圈
+  - 指令格式:
+    - Break
+    - 跳出迴圈
+  - 指令說明:
+    - 如果目前執行位置在 Loop ~ Next 中間, 則無條件跳到 Next 下一行繼續執行.
+    - 如果目前執行位置不在 Loop ~ Next 中間, 則無作用.
